@@ -1,0 +1,1 @@
+var resultsCount=0;$("#search-form").submit(function(r){r.preventDefault(),resultsCount=0;var t=$("#search-query").val();window.location="/search/#stq="+t});

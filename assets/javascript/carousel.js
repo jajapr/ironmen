@@ -1,0 +1,1 @@
+$(function(){$(".flipster").flipster({itemContainer:"ul",itemSelector:"li",style:"carousel",start:0,enableKeyboard:!0,enableMousewheel:!0,enableTouch:!0,enableNav:!1,enableNavButtons:!0,onItemSwitch:function(){}}),$("#series-coverflow").css("display","block")});

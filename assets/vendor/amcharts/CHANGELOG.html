@@ -1,0 +1,293 @@
+<h1>JavaScript Charts and Stock Chart Change Log</h1><h2>3.13.0</h2><p>Change log will be available soon. We made a lot of nice features, including plugin which makes chars fully responsive. Meanwhile take a look at this <a href="http://www.amcharts.com/demos/using-svg-filters/">SVG filters demo</a>!</p>
+<h2>3.12.0</h2><ul>
+<li>The main new feature is that every element of a chart can have class name assigned to it – you must set <strong>addClassNames</strong> property of a chart to <strong>true</strong>. This gives a bunch of new possibilities like controlling the look using CSS, CSS animations and more. Full <a href="http://www.amcharts.com/tutorials/css-class-names/">list of classNames</a>.</li>
+<li><strong>classNamePrefix</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart</a> and <a href="http://docs.amcharts.com/3/javascriptstockchart/AmStockChart">AmStockChart</a>, with default value <strong>amcharts</strong>. This prefix is added to all class names which are added to all visual elements of a chart in case <strong>addClassNames</strong> is set to true.</li>
+<li><strong>gapField</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. You can force graph to show gap at a desired data point using this feature, for example, if you set <strong>graph.gapField = “gap”</strong> and then add gap:true in one of your data items in data provider, graph will display a gap at this point.</li>
+<li><strong>gapPeriod</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>, with default value 1.1. Using this property you can specify when graph should display gap – if the time difference between data points is bigger than duration of <strong>minPeriod * gapPeriod</strong>, and <strong>connect</strong> property of a graph is set to <strong>false</strong>, graph will display gap.</li>
+<li><strong>totalTextOffset</strong> property added to ValueAxis, with default value 0. It specifies distance from data point to total text (used with stacked graphs).</li>
+<li><strong>compareGraphLineColor</strong> added to <a href="http://docs.amcharts.com/3/javascriptstockchart/StockGraph">StockGraph</a>.</li>
+<li>Bug fix: gauge axis labels could display big floating numbers in some cases.</li>
+<li>Bug fix: <strong>showStockEvents</strong> and <strong>hideStockEvents</strong> used to hide all bullets, not only events.</li>
+</ul>
+<h2>3.11.3</h2><ul>
+<li>Scrolling/zooming on touch devices now works a lot better.</li>
+<li>Bug fix: fills of step graphs (if color changed in the middle of a graph) were not properly drawn.</li>
+<li>Bug fix: period values in the legend could add one extra data item in some cases.</li>
+<li>Some problems with <strong>useUTC</strong> set to true fixed.</li>
+<li>Bug fix: adding and removing chart with mouse wheel properties enabled could result memory leak.</li>
+<li>Bug fix: <strong>fixedColumnWith</strong> was not working properly.</li>
+</ul>
+<h2>3.11.2</h2><ul>
+<li>We made quite a lot of changes regarding labels next to data points. Because of that you might require to adjust some properties after the upgrade.  New properties were introduced (<a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a> class): <strong>labelRotation</strong>, <strong>labelAnchor</strong> and <strong>labelOffset</strong>. These properties will help you to adjust label position in practically any way you need.</li>
+<li><strong>fixedColumnWidth</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. Columns will use value specified for column width and columns won’t adjust size according to the available space.</li>
+<li><strong>treatZeroAs</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/ValueAxis">ValueAxis</a>. It can be used with logarithmic scale axis. The fact is that 0 value can not be plotted on logarithmic axis (it’s mathematically impossible). However a lot of people were asking for solution. That’s why we added this property. For example, if you set <strong><span style="color: #cc6600;">treatZeroAs</span></strong> to 1,  all the values equal to 0 will be treated as 1 and the chart will render even if you have 0 values in your data.</li>
+<li><strong>stepDirection</strong> added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>, with default value <strong>“right”</strong>. You can set it to <strong>“left”</strong> or <strong>“center”</strong>. It defines to which direction step line graph should draw the step.</li>
+<li>Bug fix: Funnel chart with very small slices could produce JS error.</li>
+<li>Bug fix: Funnel chart with labels disabled could produce JS error.</li>
+<li>Bug fix: if a page had base href set, and url of a page contained # symbol, gradients were not rendered correctly.</li>
+<li>Bug fix: zooming XY chart with chart cursor could zoom-in to a wrong position.</li>
+</ul>
+<h2>3.11.1</h2><ul>
+<li><strong>AmCharts.addInitHandler(handler,  [types])</strong> method added to AmCharts.  <strong>handler</strong> is a method which will be called before initializing the chart. <strong>types</strong> is array of strings, specifying which chart types should call this method. If you don’t set any type, all the charts will call this method.  When handler method is called, chart instance is passed as an attribute.  You can use this feature to preprocess chart data or do some other things you need before initializing the chart.</li>
+<li>Bug fix: cursor zooming of Stock chart with <strong>equalSpacing</strong> set to true could behave incorrectly.</li>
+<li>Bug fix: columns with rounded corners were displayed incorrectly on IE8 and older (since 3.11.0 only).</li>
+<li>Bug fix:  JS error occurred if GaugeAxis radius was set in pixels instead of percent.</li>
+</ul>
+<h2>3.11.0</h2><ul>
+<li><strong>valueLineEnabled</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> and <a href="http://docs.amcharts.com/3/javascriptstockchart/ChartCursorSettings">ChartCursorSettings</a>. If you set it to true, horizontal (or vertical if chart is rotated) will be displayed at a mouse position. This works only with Serial charts. Check <a href="http://www.amcharts.com/demos/multiple-panels/">demo</a>.</li>
+<li><strong>valueLineBalloonEnabled</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> and <a href="http://docs.amcharts.com/3/javascriptstockchart/ChartCursorSettings">ChartCursorSettings</a>. If you set it to true, balloon with axis value will be displayed at a mouse position. This works only with Serial</li>
+<li>charts. Check <a href="http://www.amcharts.com/demos/multiple-panels/">demo</a>.</li>
+<li><strong>valueLineBalloonAxis</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. Is useful if you have more than one value axis and want to specify which axis should display value line balloon.</li>
+<li><strong>depth3D</strong> and <strong>angle</strong> properties added to Funnel chart. Allows making funnels 3D. Check <a href="http://www.amcharts.com/demos/3d-funnel-chart/">demo</a>.</li>
+<li><strong>topRadius</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. Works if <strong>depth3D</strong> and <strong>angle</strong> are bigger than 0. If you set topRadius to 1, the chart will display cylinders. In case you’ll set it to 0 – cones. Check <a href="http://www.amcharts.com/demos/3d-cylinder-chart/">demo</a>.</li>
+<li><strong>showOnAxis</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. It can only be used together with <strong>topRadius</strong> (when columns look like cylinders). If you set it to true, the cylinder will be lowered down so that the center of it’s bottom circle would be right on category axis. Check <a href="http://www.amcharts.com/demos/cylinder-gauge/">demo</a>.</li>
+</ul>
+<h2>3.10.4</h2><ul>
+<li>We were so happy with proCandlesticks feature that we didn’t notice that we made it wrong – empty candles should be displayed when current close is bigger than current open. Fixed the problem in this version.</li>
+</ul>
+<h2>3.10.3</h2><ul>
+<li>New property: <strong>proCandlesticks</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. If this is set to true, candlesticks will be colored in a different manner – if current close is less than current open, the candlestick will be empty, otherwise – filled with color. If previous close is less than current close, the candlestick will use positive color, otherwise – negative color.</li>
+<li>New property: <strong>usePrefixes</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/GaugeAxis">GaugeAxis</a>.</li>
+<li>Improvement: If stock chart’s graph has <strong>valueField</strong> set which was not defined in <strong>fieldMappings</strong>, this graph is not displayed in the legend.</li>
+<li>Bug fix: if <strong>clustered</strong> was set to false, the graph was hidden if only this graph was visible, also the graph did not took full width if more than one clustered graphs where on the same chart.</li>
+<li>Bug fix: memory leak after <strong>validateNow()</strong> call fixed.</li>
+<li>Bug fix: <strong>clickSlice</strong> was fired when unhiding slice via legend marker.</li>
+<li>Bug fix: Stock charts period button was deselected if data set was selected for comparing or a different data set was selected.</li>
+<li>Bug fix: scrollbar could act strange in some cases (especially if <strong>equalSpacing</strong> was set to <strong>true</strong> or with non date-based data).</li>
+<li>Bug fix: if <strong>AmCharts.useUTC</strong> was set to <strong>true</strong>, chart was not parsing date strings correctly.</li>
+<li>Bug fix: Stock chart’s scrollbar did not apply language if not default was used.</li>
+<li>Bug fix: if multiple charts on the same page used different languages, <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> balloon used language of the last chart.</li>
+<li>Bug fix: if custom <strong>urlTarget</strong> was set for a chart, chart kept opening new window instead of opening url in the same one.</li>
+<li>Bug fix: if <strong>graphBulletSize</strong> was set to 1 on <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>, <strong>graphBulletAlpha</strong> property was ignored.</li>
+</ul>
+<h2>3.10.2</h2><ul>
+<li>Skipped this version</li>
+</ul>
+<h2>3.10.1</h2><ul>
+<li>Bug fix: if a column graph had <strong>newStack</strong> property set to <strong>true</strong> and the value of this graph was missing, the next graphs were stacked in a wrong position.</li>
+<li>Bug fix: In case multiple value axes chart had line graphs with <strong>connect</strong> set to <strong>false</strong> and there were gaps in the data, gaps might not be displayed.</li>
+<li>Value axis labels with <strong>logarithmic</strong> set to <strong>true</strong> could use wrong interval in some cases.</li>
+</ul>
+<h2>3.10.0</h2><ul>
+<li><strong>fillToAxis</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. It can only be used with <a href="http://docs.amcharts.com/3/javascriptcharts/AmXYChart">AmXYCharts</a>. If you set this property to id or reference of your X or Y axis, and the <strong>fillAlphas</strong> is &gt; 0, the area between graph and axis will be filled with color, like in <a href="http://www.amcharts.com/demos/xy-chart-fills-axis/">this demo</a>.</li>
+<li><strong>showAt</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/StockEvent">StockEvent</a>. It will allow you to place bullets at <strong>open</strong>, <strong>close</strong>, <strong>low</strong> or <strong>high</strong> values (mostly used with candlestick/ohlc graphs)</li>
+<li><strong>value</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/StockEvent">StockEvent</a>. It will allow you positioning stock event bullets at any value you want.</li>
+<li><strong>useNegativeColorIfDown</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. If <strong>negativeLineColor</strong> and/or <strong>negativeFillColors</strong> are set and <strong>useNegativeColorIfDown</strong> is set to true (default is false), the <strong>line</strong>, <strong>step</strong> and <strong>column</strong> graphs will use these colors for lines, bullets or columns if previous value is bigger than current value. In case you set <strong>openField</strong> for the graph, the graph will compare current value with <strong>openField</strong> value instead of comparing to previous value. Here <a href="http://www.amcharts.com/demos/line-different-colors-ups-downs/">is a demo</a>.</li>
+<li><strong>expand</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/Guide">Guide</a>. Works if a guide is added to <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis </a>and this axis is non-date-based. If you set it to true, the guide will start (or be placed, if it’s not a fill) on the beginning of the <strong>category</strong> cell and will end at the end of <strong>toCategory</strong> cell.</li>
+<li><strong>balloonText</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/GaugeBand">GaugeBand</a>. When rolled-over, band will display balloon if you set some text for this property.</li>
+<li><strong>labelFunction</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmSlicedChart">AmSlicedChart </a>(applies for <a href="http://docs.amcharts.com/3/javascriptcharts/AmPieChart">AmPieChart </a>and <a href="http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart">AmFunnelChart</a>). You can use it to format data labels in any way you want.</li>
+<li><strong>clearSelection()</strong> method added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. Can be used when <strong>selectWithoutZooming</strong> is set to true and you need to clear the selection made by user.</li>
+<li><strong>labelOffset</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AxisBase">AxisBase</a>. You can use it to adjust position of axes labels. Works both with <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis </a>and <a href="http://docs.amcharts.com/3/javascriptcharts/ValueAxis">ValueAxis</a>.</li>
+<li><strong>switchable</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>, with default value set to true. If you set it to false, the graph will not be hidden when user clicks on legend entry.</li>
+<li><strong>valueFunction</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmLegend">AmLegend</a>. You can use it to format value labels in any way you want.</li>
+<li><strong>tickPosition</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis</a>. It can be set to <strong>middle</strong> (default) or <strong>start</strong>. Works only with non-date-based data.  <a href="http://www.amcharts.com/demos/simple-column-chart/#theme-patterns">Demo </a>of <strong>tickPosition</strong> set to <strong>start</strong>.</li>
+<li><strong>labelFunction</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. You can use it to format labels of data items in any way you want.</li>
+<li>Pattern objects can have <strong>color</strong> property now. If your pattern is transparent, the background will be filled with this <strong>color</strong>, like in <a href="http://www.amcharts.com/demos/map-with-patterns/">this example</a>.</li>
+<li><strong>graphBulletAlpha</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. If you make graph’s bullets invisible by setting their opacity to 0 and will set <strong>graphBulletAlpha</strong> to 1, the bullets will only appear at the cursor’s position. Here is a <a href="http://www.amcharts.com/demos/step-line-chart/">demo illustrating this</a>.</li>
+<li><strong>labelColorField</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis</a>. You can use it to set color of a axis label. Works only with non-date-based data.</li>
+<li><strong>maxLabelWidth</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmSlicedChart">AmSlicedChart </a>(applies for <a href="http://docs.amcharts.com/3/javascriptcharts/AmPieChart">AmPieChart </a>and <a href="http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart">AmFunnelChart</a>). If width of the label is bigger than <strong>maxLabelWidth</strong>, it will be wrapped.</li>
+<li><strong>labelWidth</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmLegend">AmLegend</a>. If width of the label is bigger than <strong>labelWidth</strong>, it will be wrapped.</li>
+<li><strong>compareGraphBulletColor</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/StockGraph">StockGraph</a>.</li>
+<li><strong>mouseWheelZoomEnabled</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmSerialChart">AmSerialChart</a>. Specifies if zooming of a chart with mouse wheel is enabled. If you press shift while rotating mouse wheel, the chart will scroll.</li>
+<li><strong>boldLabels</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AxisBase">AxisBase</a>. Labels will be bold if you set it to true.</li>
+<li>Bug fix: balloons no longer flicker if mouse is moved fast on column charts.</li>
+<li>Bug fix: <strong>minSelectedTime</strong> and <strong>maxSelectedTime</strong> was not working properly on <a href="http://docs.amcharts.com/3/javascriptstockchart/AmStockChart">AmStockChart</a>.</li>
+<li>Bug fix: position of data labels in 3D stacked columns was not always accurate.</li>
+<li>Bug fix: value balloons of <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> were overlapping if the chart was rotated.</li>
+<li>Bug fix: if a div containing chart/map had CSS3 transformations applied, the mouse position was calculated incorrectly.</li>
+<li>Bug fix: <strong>addGuide</strong> method was not working on IE borwsers.</li>
+<li>Bug fix: Safari could leave previously rendered chart or other objects in the background after the chart was redrawn (only since 3.9.0).</li>
+</ul>
+<h2>3.9.1</h2><ul>
+<li>Bug fix: Stock chart was not working properly with millisecond data.</li>
+<li>Bug fix: if all graphs of XY chart were hidden from the legend, the chart could start acting weird.</li>
+<li>Bug fix: sometimes the graph’s balloon became invisible if graph was hidden/unhidden from the legend.</li>
+<li>Bug fix: angular gauge was not working properly with negative values.</li>
+<li>Bug fix: if <strong>equalSpacing</strong> was set to <strong>true</strong>, the zooming with chart cursor could zoom-in to a wrong position (Stock chart only).</li>
+<li>Bug fix: cursors of stock chart could get out of sync in some cases.</li>
+</ul>
+<h2>3.9.0</h2><ul>
+<li>We jumped directly to V 3.9.0 from 3.4.9 in order to keep the same version numbers for charts and maps, as they are often used together. This will help to avoid some misunderstandings.</li>
+<li>Serious memory leak fixed. It appeared on when chart was redrawn. We noticed this with recent version of Chrome and it seems like this is browser problem. Nevertheless, we found a solution. We strongly recommend to update to this version if you refresh chart with a new data or rebuild it a lot for some other reasons.</li>
+<li>A possibility to switch languages easily added. Now you can easily change language of a chart (there are not too many texts there, most of them are names of months and weekdays, but still). To do this, you must include lang file from amcharts/lang/ folder and set <strong>chart.language = “de”</strong> or some other language.</li>
+<li>Exporting chart as SVG now produces one nice file (used to produce separate files for legend and a chart)</li>
+<li>balloonPointerOrientation added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor </a>class (also for <a href="http://docs.amcharts.com/3/javascriptstockchart/ChartCursorSettings">ChartCursorSettings</a>).</li>
+</ul>
+<h2>3.4.10</h2><ul>
+<li>Fix: Saving chart as image was not working properly with IE11 since last release.</li>
+<li><strong>recalculateFromDate</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/StockPanel">StockPanel</a>, allows you to set the date since when the values should be recalculated to percent.</li>
+<li>Fix: sometimes, when data of StockChart was recalculated to percent, the recalculation started a bit too early which made 0 value to be outside the selection.</li>
+<li>Fix: new way of using <strong>amExport</strong> was not working properly on <a href="http://docs.amcharts.com/3/javascriptstockchart/AmStockChart">StockChart</a>.</li>
+</ul>
+<h2>3.4.9</h2><ul>
+<li><strong>clickItem</strong>, <strong>rollOverItem</strong> and <strong>rollOutItem</strong> events added to <a href="http://docs.amcharts.com/3/javascriptcharts/AxisBase">AxisBase</a>. This will allow you to register mouse events on both <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis </a>and <a href="http://docs.amcharts.com/3/javascriptcharts/ValueAxis">ValueAxis </a>labels.</li>
+<li>Fix: Stock Chart used not to show the beginning or the end of period if the data was grouped but the actual data started/ended somewhere in the middle of this period. This could cause some confusions. Now it is fixed, however if you prefer old behaviour, set <strong>chart.extendToFullPeriod = false;</strong></li>
+<li>We added a more easy way to use exporting as an image feature. Charts has <strong>amExport</strong> property now and here is an <a href="http://docs.amcharts.com/3/javascriptcharts/AmExport">AmExport </a>class reference.</li>
+</ul>
+<h2>3.4.8</h2><ul>
+<li><strong>guides</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmCoordinateChart">AmCoordinateChart</a>. Instead of adding guides to the axes, you can add them using this property.</li>
+<li><strong>showComparedOnTop</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmStockChart">StockPanel</a>. This allows you to set the order of main graph vs compared ones. Default value is <strong>true</strong>.</li>
+<li>Bug fix: <strong>textAlign </strong>property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmBalloon">AmBalloon </a>was not working properly.</li>
+<li>Bug fix: <a href="http://docs.amcharts.com/3/javascriptstockchart/GaugeAxis">GaugeAxis </a>bands might me displayed incorrectly if axis started not on 0 value.</li>
+<li>Bug fix: if panning was enabled for stock chart, different panels could get out of sync in some cases.</li>
+<li>Bug fix: if <strong>startAngle</strong> was set for <a href="http://docs.amcharts.com/3/javascriptcharts/AmPieChart">AmPieChart</a>, labels could be displayed at a wrong position.</li>
+</ul>
+<h2>3.4.7</h2><ul>
+<li>You no longer need to add empty data items for dates if you want to show gaps in your data, it’s enough to set <strong>connect</strong> property of <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a> to false.</li>
+<li>Instead of <strong>numberFormatter</strong> and <strong>percentFormatter</strong> properties of <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart</a> we recommend using separate properties – <strong>precision</strong>, <strong>percentPrecision</strong>, <strong>decimalSeparator</strong> and <strong>thousandsSeparator</strong>. <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a> class also has <strong>precision</strong> property in case you need a separate precision for a graph. The old formatters will still work.</li>
+<li><strong>minBulletSize</strong> property of <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a> default changed to 3, as since the 3.4.4 due new way of bullet size calculation, the bubble with the most small value might not be seen at all.</li>
+<li>Bug fix: Stock chart could freeze when panning it (only if <strong>pan</strong> for cursor was set to true).</li>
+<li>Bug fix: <strong>alphaField</strong> was ignored by pie chart.</li>
+<li>Bug fix: <a href="http://docs.amcharts.com/3/javascriptstockchart/PeriodSelector">PeriodSelector</a> of Stock chart use to select some extra days when predefined period of several years/months was selected.</li>
+</ul>
+<h2>3.4.6</h2><ul>
+<li><strong>fullWidth</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. If set to <strong>true</strong>, instead of a cursor line user will see a fill which width will always be equal to the width of one data item. We’d recommend setting <strong>cusrsorAlpha</strong> to 0.1 or some other small number if using this feature. <a href="http://www.amcharts.com/demos/duration-on-value-axis/">Demo of the feature</a>.</li>
+<li><strong>twoLineMode</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis</a> and <a href="http://docs.amcharts.com/3/javascriptstockchart/CategoryAxesSettings">CategoryAxesSettings</a>. It works only when <strong>parseDates</strong> is set to true and <strong>equalSpacing</strong> is false. If you set it to true, at the position where bigger period changes, category axis will display date strings of bot small and big period, in two rows.</li>
+<li><strong>line</strong> marker type is again available for <a href="http://docs.amcharts.com/3/javascriptstockchart/AmLegend">AmLegend</a>‘s <strong>markerType</strong> property (also markerType of <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a> if you need to set custom types for your graphs).</li>
+<li><a href="http://docs.amcharts.com/3/javascriptcharts/GaugeAxis">GaugeAxis</a> properties <strong>valueInterval</strong> and <strong>minorTickInterval</strong> doesn’t have default values since this version, as it might cause problems with big numbers. Instead we added <strong>gridCount</strong> property which is 5 by default. Note, <a href="http://docs.amcharts.com/3/javascriptcharts/GaugeAxis">GaugeAxis</a> doesn’t adjust <strong>gridCount</strong>, so you should check your values and choose a proper <strong>gridCount</strong> which would result grids at round numbers.</li>
+</ul>
+<h2>3.4.5</h2><ul>
+<li><strong>newStack</strong> property added to <strong>AmGraph</strong>. If you set it to true, column chart will begin new stack. This allows having <a href="http://www.amcharts.com/demos/stacked-clustered-column-chart/">Clustered and Stacked column/bar</a> chart.</li>
+<li>Bug fix: since  3.4.4 old IE browsers failed to display chart if legend position was <strong>left</strong> or <strong>right</strong><span style="line-height: 1.428571429;"> </span></li>
+</ul>
+<h2>3.4.4</h2><ul>
+<li>You can set <strong>divId</strong> for <a href="http://docs.amcharts.com/3/javascriptstockchart/StockLegend">StockLegend </a>now too. This should be id or reference to a div outside the chart where you want a legend  to appear.</li>
+<li>Adjusted algorithm of bullet size calculation for Bubble (XY) chart.</li>
+<li><strong>showBulletsAt</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. Works with <strong>candlestick</strong> graph type, you can set it to <strong>open</strong>, <strong>close</strong>, <strong>high</strong>, <strong>low</strong>. If you set it to <strong>high</strong>, the events will be shown at the tip of the high line.</li>
+<li>New property, <strong>minDistance</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. Default value is 1. It is useful if you have really lots of data points. Based on this property the graph will omit some of the lines (if the distance between points is less that <strong>minDistance</strong>, in pixels). This will  not affect the bullets or indicator in anyway, so the user will not see any difference (unless you set minValue to a bigger value, let say 5), but will increase performance as less lines will be drawn. By setting value to a bigger number you can also make your lines look less jagged.</li>
+<li>Changed default value of panEventsEnabled (property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart </a>and <a href="http://docs.amcharts.com/3/javascriptstockchart/PanelsSettings">PanelsSettings </a>classes) <strong>from</strong> false to <strong>true</strong>.</li>
+<li>Bug fix: right scrollbar grip of Stock chart was not working properly with <strong>equalSpacing</strong> set to true and <strong>minPeriod</strong> was not <strong>DD</strong> (since 3.4.3 version only).</li>
+<li>Bug fix: if amcharts.js and ammap.js was included for several times (you shouldn’t do that, but still), the charts were not working properly.</li>
+<li>Bug fix: if the slice of a pie/funnel was hidden and the method rollOverSlice(slice) was called from outside, the balloon was still shown.</li>
+<li>Bug fix: Sometimes part of a legend was cut-off when labels were long enough and legend position was <strong>left</strong> or <strong>right.</strong></li>
+<li>Bug fix: outline of funnel chart slices had some extra unnecessary lines.</li>
+</ul>
+<h2>3.4.3</h2><ul>
+<li><strong>processDelay</strong> property added to AmCharts class. If you set <strong>AmCharts.processDelay = 200;</strong> all the charts on the page will be rendered with 200 ms intervals. This is very comfortable if you have a lot of charts on the page and do not want to overload the device CPU. </span></li>
+<li>A third parameter, <strong>delay</strong> was added to <strong>AmCharts.makeChart</strong> method. It specifies the delay in ms, at which the chart must be rendered, for example: <strong>AmCharts.makeChart(“chartDiv”, {chart config}, 200);</strong></span></li>
+<li><strong>offset</strong> property added to ChartScrollbar. Allows to place scrollbar apart from plot area.</li>
+<li><strong>autoRotateCount</strong> and <strong>autoRotateAngle</strong> properties added to CategoryAxis. Works only when dates are not parsed. Axis labelsl will be rotated if the number of series will be equal or exceed <strong>autoRotateCount</strong> value.</li>
+<li><strong>rollOverGraph</strong> and <strong>rollOutGraph</strong> events added to AmCoordinateChart.</li>
+<li><strong>changed</strong> event of stock chart’s period selector passes the original mouse event as event property.</li>
+<li>Bug fix: Stock chart used to select one extra period when dates were entered in input fields and <strong>equalSpacing</strong> was set to true;</li>
+<li>Bug fix: some issues with floating point errors fixed</li>
+<li>Bug fix: zoom-out button border was always visible on IE8.</li>
+<li>Bug fix: funnel chart was not working properly with labels disabled.</li>
+<li>filesaver.js was updated so that in case it is included with IE8 and older browsers, it wouldn’t throw JS error.</li>
+</ul>
+<h2>3.4.2</h2><ul>
+<li>Bug fix: if pie slice had no label, the external method <strong>rollOverSlice(index)</strong> was not working</li>
+<li>Bug fix: x switch of the legend position adjusted</li>
+<li>Bug fix: when <strong>autoWrap</strong> for category axis was set to <strong>true</strong>, in some cases axis title was cut.</li>
+<li><strong>markPeriodChange</strong> was set to true in <a href="http://docs.amcharts.com/3/javascriptstockchart/CategoryAxesSettings">CategoryAxesSettings</a>.</li>
+</ul>
+<h2>3.4.1</h2><ul>
+<li>Patterns theme added.</li>
+<li>Themes were updated a bit.</li>
+<li>Labels of angular gauge axis adjusted.</li>
+<li>When scrolling serial/stock charts with mousewheel (chart.mouseWheelScrollEnabled must be set to true), if user press shift button, the chart will zoom-in or zoom-out;</li>
+<li><strong>adjustment</strong> property added to  <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. Default value is 0, if you set it to -1, the balloon will show near previous, if you set it to 1 – near next data point.</li>
+</ul>
+<h2>3.4.0</h2><ul>
+<li>Link to amCharts.com site in a free version was made less noticeable – it uses chart’s font color and font size and you can adjust it’s position using <strong>creditsPosition</strong> property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart</a>. Possible values are: <strong>top-left</strong>, <strong>top-right</strong>, <strong>bottom-right</strong> and <strong>bottom-left</strong>. This will help you to achieve better layout of a chart.</li>
+<li>We fixed typo of <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> property – it was showNextAvalable and now is <strong>showNextAvailable</strong>. The old one won’t work.</li>
+<li>Since now you can scroll serial and stock charts with mouse wheel. To enable this, set <strong>chart.mouseWheelScrollEnabled = true</strong> (default is false).</li>
+<li><strong>moved</strong> event added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. It is dispatched every time the mouse is moved. The event object has the following properties: <strong>x</strong>, <strong>y</strong> (coordinates of the cursor), <strong>chart</strong> and <strong>zooming</strong>.</li>
+<li><strong>axisX</strong> and <strong>axisY</strong> properties added to <a href="http://docs.amcharts.com/3/javascriptcharts/AxisBase">AxisBase</a>. They are read-only and returns <strong>x</strong> and <strong>y</strong> positions of the axis.</li>
+<li><strong>unit</strong> and <strong>unitPosition</strong> (with possible values <strong>left</strong> and <strong>right</strong>) added to <a href="http://docs.amcharts.com/3/javascriptcharts/GaugeAxis">GaugeAxis</a> class.</li>
+<li><strong>autoWrap</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis</a>, with default value <strong>false</strong>. If you set it to <strong>true</strong>, the axis labels will be wrapped if they won’t fit in the allocated space.</li>
+<li><strong>minHorizontalGap</strong> (default 75) and <strong>minVerticalGap</strong> (35) properties added to <a href="http://docs.amcharts.com/3/javascriptcharts/AxisBase">AxisBase</a>. They are used to calculate the number of grid lines when <strong>autoGridCount</strong> is <strong>true</strong>. You can modify these values to have more or less grid lines.</li>
+</ul>
+<h2>3.3.6</h2><ul>
+<li>Bug fix – charts with legend could fail if there was a Google Analytics script in the page.</li>
+<li><strong>stepDirection</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. If you set it to <strong>left</strong>, step line graph will draw the step to the left of the date/category.</li>
+</ul>
+<h2>3.3.5</h2><ul>
+<li>Bug fix: 3D pie chart was not rendered in IE8 and older (since 3.3.4 version only).</li>
+<li>Candlestick graphs can display patterns.</li>
+<li>Old listeners are removed automatically if the same listener was added, this helps to avoid duplicate calls of event handlers.</li>
+<li>Bug fix: \n in <strong>labelText</strong> of <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a> is now properly displayed as new line.</li>
+</ul>
+<h2>3.3.4</h2><ul>
+<li>Export as image script fixed – bullets of charts with scrollbars were not exported.</li>
+<li>dataContext property added to <a href="http://docs.amcharts.com/3/javascriptcharts/SerialDataItem">SerialDataItem</a>. It holds reference to original data object and might be used when using <strong>labelFunction</strong> to format custom balloon text and in some other cases.</li>
+<li>XY chart can display bullets with patterns (if <strong>valueField</strong> is set).</li>
+</ul>
+<h2>3.3.3</h2><ul>
+<li><strong>hideBalloonTime</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart</a> class, default value is 150 (milliseconds). It sets time after which balloon is hidden if user rolls-out of the object. Increasing the time might help to prevent balloon flickering while moving the mouse over the object.</li>
+<li><strong>useLineColorForBulletBorder</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. Might help in some situations, especially when using themes.</li>
+<li>3D charts now look a lot better with patterns.</li>
+<li><strong>endWidth</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/GaugeArrow">GaugeArrow </a>(default value 0). This will allow having more modern, rectangular arrows.</li>
+<li><a href="http://docs.amcharts.com/3/javascriptcharts/AmAngularGauge"><strong>facePattern</strong></a> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmAngularGauge">AmAngularGauge</a>. You can fill gauge’s face with some pattern using it.</li>
+<li>Bug fix: new lines were ignored in balloons.</li>
+</ul>
+<h2>3.3.2</h2><ul>
+<li>You can now set theme for all the charts on your page by setting: <strong>AmCharts.theme = AmCharts.themes.light;</strong> If you are creating charts using JavaScript API, not JSON, then this is quite a comfortable way, as you won’t need to pass theme to each object you create.</li>
+<li>Bug fix: <strong>rendered</strong> event was fired only on first render, now it is fired each time the chart is rendered after <strong>chart.validateNow();</strong> method is called. This bug caused the export buttons to disappear after the <strong>validateNow()</strong> method.</li>
+<li><strong>showNextAvalable</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> (default is <strong>false</strong>). If <strong>true</strong>, the graph will display balloon on next available data point if currently hovered item doesn’t have value for this graph.</li>
+<li><strong>periodSpan</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a> (default is 1). This property can be used by step graphs – you can set how many periods one horizontal line should span.</li>
+<li><strong>end</strong> option added to <strong>pointPosition</strong> property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>.</li>
+</ul>
+<h2>3.3.1</h2><ul>
+<li>Bug fix:  <strong>\n</strong> was replaced with <strong>&lt;br&gt;</strong> in category axis and the tag was displayed.</li>
+<li>Bug fix: if <strong>lineColorField</strong> or <strong>dashLengthField</strong> or <strong>fillColorsField</strong> was set, the graph could loose the setting if zoomed.</li>
+</ul>
+<h2>3.3.0</h2><ul>
+<li>Since this version our charts and maps support themes. This means that instead of setting every property for each graph or axis or any other object, you can set new defaults in a theme file. This will make developers life a lot easier. Currently you can find three themes in <strong>amcharts/themes</strong> folder – <strong>dark.js</strong>, <strong>light.js</strong> and <strong>chalk.js</strong> To set a theme for a chart, simply set theme property to the name of the file: <strong>theme:”light”</strong>. Note, this will work only if you are creating chart using JSON config. If you do it in old way (JSON config is supported since v 3.2.0), you should pass theme object for each new object you build, for example: <strong>var graph = new AmCharts.AmGraph(AmCharts.themes.light);</strong> We will be adding more themes soon. Check <strong>_usingThemes.html</strong> file in samples folder to see themes in action.</li>
+<li><strong>patterns</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmSlicedChart">AmSlicedChart</a> and <a href="http://docs.amcharts.com/3/javascriptcharts/AmCoordinateChart">AmCoordinateChart</a> – instead of setting a pattern for a slice/graph, you can pass array of patterns using this property.</li>
+<li>You can now control zoom-out buttons with the following new properties of <a href="http://docs.amcharts.com/3/javascriptcharts/AmRectangularChart">AmRectangularChart</a>: <strong>zoomOutButtonImageSize</strong>, <strong>zoomOutButtonImage</strong>, <strong>zoomOutButtonColor</strong>, <strong>zoomOutButtonAlpha</strong>, <strong>zoomOutButtonRollOverAlpha</strong>, <strong>zoomOutButtonPadding</strong>.</li>
+</ul>
+<h2>3.2.0</h2><ul>
+<li><strong>AmCharts.makeChart(divID, chartConfig);</strong> method added. <strong>divID</strong> is id of a <strong>div</strong> where your chart should appear. <strong>chartConfig</strong> is JSON object with chart configuration. Check examples with <strong><em>JSON</em></strong> prefix in samples folder to see this in action.</li>
+<li><strong>type</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart</a> class. It is required to specify type to one of the following, when creating charts from JSON config: <strong>serial</strong>, <strong>xy</strong>, <strong>radar</strong>, <strong>pie</strong>, <strong>gauge</strong>, <strong>funnel</strong>, <strong>map</strong>, <strong>stock.</strong></li>
+<li>A possibility to export charts as image/pdf/svg added for all modern browsers except IE9 (IE10 is supported). The exporting doesn’t require any server side software and is made using JavaScript libraries only. Check samples with <strong><em>exporting</em></strong> prefix to see this in action. Exporting to SVG doesn’t work very properly with stock chart or charts with legend (will offer saving multiple files).</li>
+<li>You can set any legend items via <strong>data</strong> property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmLegend">AmLegend</a>, for example: <strong>legend.data = [{title:”first”, color:”#CC0000″, value:50}, {title:”second”, color:”#00CC00″, value:100}];</strong> This allows creating any legend items you want. Call <strong>chart.legend.validateNow();</strong> if you change legend’s data at run time.</li>
+<li><a href="http://docs.amcharts.com/3/javascriptcharts/AmAngularGauge">AmAngularGauge</a> supports legend now.</li>
+<li><strong>gridAboveGraphs</strong><span style="line-height: 1.428571429;"> property added to </span><a href="http://docs.amcharts.com/3/javascriptcharts/AmCoordinateChart">AmCoordinateChart</a><span style="line-height: 1.428571429;">. This allow to show grid lines above your graphs, as world-famous </span><span style="line-height: 1.428571429;">data visualization guru Edward Tufte suggests. Note, this won’t work properly with 3D charts.</span></li>
+<li>You can also use negative values from -90 to -1 for <strong>labelRotation</strong> property of <a href="http://docs.amcharts.com/3/javascriptcharts/CategoryAxis">CategoryAxis</a> since now.</li>
+<li>Bug fix: if a chart with scrollbar was rotated after the chart is created, the scrollbar’s graph was shifted to a wrong position.</li>
+<li>Bug fix: column graph type wasn’t displayed in chart scrollbar (since 3.1.0).</li>
+<li>Bug fix: step line with changing line color was rendered incorrectly if some values were missing.</li>
+<li>Bug fix: <strong>labelPosition</strong> values <strong>inside</strong> and <strong>middle</strong> were not working properly with bar charts.</li>
+<li>Bug fix: <a href="http://docs.amcharts.com/3/javascriptcharts/AmAngularGauge">AmAngularGauge</a> chart wasn’t firing <strong>rendered</strong> event.</li>
+</ul>
+<h2>3.1.1</h2><ul>
+<li>Bug fix: FireFox error messages about style declarations fixed.</li>
+<li>Bug fix: <strong>maxWidth</strong> property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmBalloon">AmBalloon</a> was ignored.</li>
+</ul>
+<h2>3.1.0</h2><ul>
+<li>Great new features added – charts now support patterns (can fill bars, lines and slices with images) and can simulate hand drawn charts – the lines will be a bit distorted and produce a nice effect. Check our new <a href="http://www.amcharts.com/inspiration/">inspiring samples</a>  to see new possibilities in action.</li>
+<li>Patterns can be set for entire graphs or for individual columns/slices. In case you want to set pattern for a graph, use <strong>pattern</strong> property of <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a>. If you want to set individual pattern for a column or slice, describe patterns in chart’s data provider and set <strong>patternField</strong> for a graph or pie/funnel chart. Value of pattern should be object with <strong>url</strong>, <strong>width</strong>, <strong>height</strong> of an image, optionally it might have <strong>x</strong>, <strong>y</strong>, <strong>randomX</strong> and <strong>randomY</strong> values. For example: <strong>graph.pattern = {“url”:”../amcharts/patterns/black/pattern1.png”, “width”:4, “height”:4};</strong> check amcharts/patterns folder for some patterns. You can create your own patterns and use them. Note, <strong>x</strong>, <strong>y</strong>, <strong>randomX</strong> and <strong>randomY</strong> properties won’t work with IE8 and older.</li>
+<li><span style="line-height: 1.428571429;">if you set <strong>chart.handDrawn = true</strong>, the lines of a chart will be distorted and will produce hand-drawn effect. </span>You can also modify <strong>handDrawScatter</strong> (default value is 2) and <strong>handDrawThickness</strong> (default value 1)  of <a href="http://docs.amcharts.com/3/javascriptcharts/AmChart">AmChart</a> values for more scattered view.</li>
+<li><strong>offsetY</strong> and <strong>offsetX</strong> properties added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmBalloon">AmBalloon</a>. Specifies the distance from the mouse position to balloon’s pointer. You might want to increase distance when using hand drawn style.</li>
+</ul>
+<h2>3.0.0</h2><ul>
+<li><span style="line-height: 1.428571429;">As not all users require all type of charts, we spilt the js file into several files – one main <strong>amcharts.js</strong> file, plus </span>a separate js file for each chart type. This means you can include only the charts you need. If you are worried about number of requests, you can simply copy/paste the source of the charts you use to the main file.</li>
+<li><span style="line-height: 1.428571429;">Although we changed some default values in order to improve usability of the charts, the only thing you should worry </span>about when upgrading from v2 to v3 is the feature mention above – you should include two or more js files in order your charts to work. If you don’t like the changed defaults, you can always set them to the previous values in your chart</li>
+<li><span style="line-height: 1.428571429;">New chart type added – Funnel / Pyramid chart. </span>As this chart type has a lot of in common with pie chart, we created one base class for these chart types – <a href="http://docs.amcharts.com/3/javascriptcharts/AmSlicedChart">AmSlicedChart</a>. <a href="http://docs.amcharts.com/3/javascriptcharts/AmPieChart">AmPieChart</a> and <a href="http://docs.amcharts.com/3/javascriptcharts/AmFunnelChart">AmFunnelChart</a> now extend this class.</li>
+<li>New chart type added – <a href="http://docs.amcharts.com/3/javascriptcharts/AmAngularGauge">AngularGauge</a>. Supports multiple axes and multiple arrows.</li>
+<li>We added lots of new features to our charts and with these features you can create new chart types, like:</li>
+<li>Horizontal or vertical bullet chart – bulletChart.html</li>
+<li>Waterfall chart – waterFallChart.html</li>
+<li>Step chart without risers – lineStepNoRisers.html</li>
+<li>Error chart (both Serial and XY) – errorChart.html</li>
+<li>Possibility to show minor grid for both Category and Value axis. <strong>minorGridEnabled</strong> (default value false) and <strong>minorGridAlpha</strong> (default 0.07) properties added to <a href="http://docs.amcharts.com/3/javascriptcharts/AxisBase">AxisBase</a> class.</li>
+<li>Possibility to change line graphs’ line/fill color on any data point to create highlighted sections of the graph. To achieve this, you should set <strong>lineColorField</strong> and/or <strong>fillColorsField</strong> for your graph and have a field in your data which would contain color values at a point where you want the graph to change it’s color.</li>
+<li>Possibility to switch line from solid to dashed. Columns can also have dashed outline. To achieve this, you should set <strong>dashLengthField</strong> for your graph and have a field in your data which would contain dash length value at a point where you want the graph to change from solid to dashed or vice versa.</li>
+<li>Date strings in data now supported. Even if your chart parses dates, you can pass them as strings in your data – all you need to do is to set data date format and the chart will parse dates to date objects. This means that now data for date-based chart can be in legit JSON format. <strong>dataDateFormat</strong> property added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmSerialChart">AmSerialChart</a> and <a href="http://docs.amcharts.com/3/javascriptstockchart/AmStockChart">AmStockChart</a>.</li>
+<li>When moving chart cursor over the chart, hovered bullets can change their size. If a graph has bullets and you added <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a> to the chart, bullets will become bigger when char cursor is over them. <strong>graphBulletSize</strong> property with default value 1.7 added to <a href="http://docs.amcharts.com/3/javascriptcharts/ChartCursor">ChartCursor</a>. If you want to disable this feature, set the value to 1.</li>
+<li>Legend can now display period value. When user is not hovering the chart, legend can show <strong>sum</strong>, <strong>average</strong>, <strong>open</strong>, <strong>close</strong>, <strong>low</strong> or <strong>high</strong> values of selected period. <strong>periodValueText</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmLegend">AmLegend</a> and <strong>legendPeriodValueText</strong> added to <a href="http://docs.amcharts.com/3/javascriptcharts/AmGraph">AmGraph</a> to achieve this. The tags should be made out of two parts – the name of a field (value / open / close / high / low) and the value of the period you want to be show – open / close / high / low / sum / average / count. For example: <strong>[[value.sum]]</strong> means that sum of all data points of value field in the selected period will be displayed.</li>
+<li>To achieve the same with stock chart, we added <strong>periodValueTextRegular</strong> and <strong>periodValueTextComparing</strong> proprties to <a href="http://docs.amcharts.com/3/javascriptstockchart/StockLegend">StockLegend</a>. To show percent period values, you should add <strong>percent.</strong> prefix for your tag, for example: <strong>[[percents.value.close]]</strong> means that last percent value of a period will be displayed.</li>
+<li>Legend markers can now mirror graph’s settings, displaying a line and a real bullet as in the graph itself. <strong>useGraphSettings</strong> property with default value false was added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmLegend">AmLegend</a>. Note, we also removed <strong>line</strong> and <strong>dashedLine</strong> marker types because of this – use the <strong>useGraphSettings</strong> feature in case you need lines as markers in the legend.</li>
+<li>Legend now supports custom markers (images). <strong>customMarker</strong> property was added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. You should set path to the image which should be displayed in the legend.</li>
+<li>Diamond bullet type added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. Set <strong>graph.bullet = “diamond”</strong> to use it.</li>
+<li>Dynamic bullet size based on value axis / Error chart. Error chart is a regular serial or XY chart with bullet type set to <strong>errorX</strong> or <strong>errorY</strong>. The graph should know which axis should be used to determine the size of this bullet – that’s when <strong>graph.bulletAxis</strong> property should be set. Besides that, you should also set <strong>graph.errorField</strong>. You can also use other bullet types with this feature too. For example, if you set <strong>bulletAxis</strong> for XY chart, the size of a bullet will change as you zoom the chart.</li>
+<li>You can specify custom column width for each graph individually. <strong>columnWidth</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. Note, you set relative width here (0 – 1), not width in pixels.</li>
+<li>Columns can be overlaid on other columns, without making axis as stacked. <strong>clustered</strong> property added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmGraph">AmGraph</a>. In case you want to place graph’s columns in front of other columns, set it to false.</li>
+<li>Resize grips were made bigger to make life easier for users on touch devices.</li>
+<li>Balloons can now display any HTML and CSS inside them. This means you can add images, format text or display just about any HTML/CSS content. Because of this new feature, we removed <strong>textShadow</strong> property of <a href="http://docs.amcharts.com/3/javascriptstockchart/AmBalloon">AmBalloon</a> in this version.</li>
+<li>Balloon now can animate from point to point and also fade out when user moves away from the chart. <strong>animationDuration</strong> and <strong>fadeOutDuration</strong> properties added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmBalloon">AmBalloon</a>, with default values 0.3. <strong>animationDuration</strong> property was also added to <a href="http://docs.amcharts.com/3/javascriptstockchart/ChartCursor">ChartCursor</a>, so that the cursor line would also animate to its position.</li>
+<li>Balloon now can display shadow. <strong>shadowColor</strong> (default #000000) and <strong>shadowAlpha</strong> (default 0.4) added to <a href="http://docs.amcharts.com/3/javascriptstockchart/AmBalloon">AmBalloon</a>.</li>
+<li>Some default values of <a href="http://docs.amcharts.com/3/javascriptstockchart/AmBalloon">AmBalloon</a> changed for a better usability – <strong>adjustBorderColor</strong> to true, <strong>cornerRadius</strong> to 0, <strong>pointerWidth</strong> to 6, <strong>color</strong> to #000000.</li>
+<li>Stock chart can display scrollbar on top of the chart – you should set position property of <a href="http://docs.amcharts.com/3/javascriptstockchart/ChartScrollbarSettings">ChartScrollbarSettings</a> to <strong>“top”</strong>.<span style="line-height: 1.428571429;"> </span></li>
+</ul>

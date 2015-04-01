@@ -1,0 +1,43 @@
+extends ./_shared/pages
+
+block content
+	- var A = public.assets.data._data.totalpeople
+	//- 1.
+	- var year = []
+	- var f = []
+	- var m = []
+	each item in A
+		//- взять значение item.year и записать в массив данных year
+		- year.push(parseInt(item.year))
+		//- взять значение item.f и записать в массив данных f
+		- f.push(parseInt(item.f))
+		//- взять значение item.m и записать в массив данных m
+		- m.push(-parseInt(item.m))
+
+	//- 2.
+	//- - var B = [{"name": "year","data": year},{"name": "f","data": f},{"name": "m","data": m}]
+	- var B = [{"name": "Женщины","data": f},{"name": "Мужчины","data": m}]
+
+
+	//- =============для AmCharts========
+	- var dataAm = public.assets.data._data.totalpeople
+
+	script.
+		//- var paramForHiCharts = !{ JSON.stringify(B) };
+		//- var categories = !{ JSON.stringify(year) };
+		var dataForAmCharts = !{JSON.stringify(dataAm)};
+
+	.additional_menu
+		a(href="./gender.html") Пол/Год участия
+		//- a(href="#") Год участия
+		a(href="./age-class.html") Возрастные группы
+
+	.description
+		p Больше всего принимали участие в <span> такой-то </span> год, а в <span> такой-то </span> год гораздо меньше. Далее несколько предложений описывающих выводы из визуализации. Разнообразный и богатый опыт дальнейшее развитие различных форм деятельности способствует
+	#chartall
+	//- #chartall-high
+	//- #chartall-zing
+	//- .chartall-d3
+
+
+
